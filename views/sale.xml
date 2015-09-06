@@ -1,0 +1,45 @@
+<openerp>
+    <data>
+
+        <record id="view_order_pretty_price_tree" model="ir.ui.view">
+            <field name="name">Sale Order Pretty Price Tree</field>
+            <field name="model">sale.order</field>
+	    <field name="inherit_id" ref="sale.view_order_tree" />
+            <field name="arch" type="xml">
+	        <field name="amount_total" position="replace" >
+		    <field name="amount_total" sum="Total Tax Included" widget="symbol" />
+	        </field>
+	    </field>
+	</record>
+
+        <record id="view_order_pretty_price_quote_tree" model="ir.ui.view">
+            <field name="name">Sale Order Pretty Price Quote Tree</field>
+            <field name="model">sale.order</field>
+	    <field name="inherit_id" ref="sale.view_quotation_tree" />
+            <field name="arch" type="xml">
+	        <field name="amount_total" position="replace" >
+		    <field name="amount_total" sum="Total Tax Includes" widget="symbol" />
+	        </field>
+	    </field>
+	</record>
+
+
+        <record id="view_sale_order_pretty_price" model="ir.ui.view">
+            <field name="name">Sale Order Pretty Price</field>
+            <field name="model">sale.order</field>
+            <field name="inherit_id" ref="sale.view_order_form" />
+            <field name="arch" type="xml">
+                <data>
+
+		    <xpath expr="//field[@name='order_line']/form//field[@name='price_unit']" position="replace">
+			<field name="price_unit" widget="symbol" />
+		    </xpath>
+
+		    <xpath expr="//field[@name='order_line']/tree//field[@name='price_unit']" position="replace">
+			<field name="price_unit" widget="symbol" />
+		    </xpath>
+		</data>
+	    </field>
+	</record>
+    </data>
+</openerp>

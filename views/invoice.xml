@@ -1,0 +1,36 @@
+<openerp>
+    <data>
+
+        <record id="invoice_pretty_price_tree" model="ir.ui.view">
+            <field name="name">Account Invoice Pretty Price Tree</field>
+            <field name="model">account.invoice</field>
+	    <field name="inherit_id" ref="account.invoice_tree" />
+            <field name="arch" type="xml">
+		<field name="residual" position="replace">
+		    <field name="residual" sum="Residual Amount" widget="symbol" />
+		</field>
+		<field name="amount_untaxed" position="replace" >
+		    <field name="amount_untaxed" sum="Untaxed Amount" widget="symbol"/>
+		</field>
+		<field name="amount_total" position="replace" >
+		    <field name="amount_total" sum="Total Amount" widget="symbol"/>
+		</field>
+	    </field>
+	</record>
+<!--
+        <record id="invoice_supplier_pretty_price_form" model="ir.ui.view">
+            <field name="name">Account Invoice Pretty Price Supplier Form</field>
+            <field name="model">account.invoice</field>
+	    <field name="inherit_id" ref="account.invoice_supplier_form" />
+            <field name="arch" type="xml">
+		<xpath expr="//field[@name='invoice_line']/tree//field[@name='price_unit']" position="replace">
+		    <field name="price_unit" widget="symbol" />
+		</xpath>
+		<xpath expr="//field[@name='invoice_line']/tree//field[@name='price_subotal']" position="replace">
+		    <field name="price_subtotal" widget="symbol" />
+		</xpath>
+	    </field>
+	</record>
+-->
+    </data>
+</openerp>

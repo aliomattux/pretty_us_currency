@@ -1,0 +1,27 @@
+<openerp>
+    <data>
+        <record id="purchase_pretty_price_form" model="ir.ui.view">
+            <field name="name">Purchase Pretty Price Form</field>
+            <field name="model">purchase.order</field>
+	    <field name="inherit_id" ref="purchase.purchase_order_form" />
+            <field name="arch" type="xml">
+		<xpath expr="//field[@name='order_line']/tree//field[@name='price_unit']" position="replace">
+		    <field name="price_unit" widget="symbol" />
+		</xpath>
+	    </field>
+	</record>
+        <record id="purchase_pretty_price_tree" model="ir.ui.view">
+            <field name="name">Purchase Pretty Price Tree</field>
+            <field name="model">purchase.order</field>
+	    <field name="inherit_id" ref="purchase.purchase_order_tree" />
+            <field name="arch" type="xml">
+		<field name="amount_untaxed" position="replace" >
+		    <field name="amount_untaxed" sum="Total Untaxed amount" string="Untaxed" widget="symbol" />
+		</field>
+		<field name="amount_total" position="replace" >
+		    <field name="amount_total" sum="Total amount" widget="symbol" />
+		</field>
+	    </field>
+	</record>
+    </data>
+</openerp>
